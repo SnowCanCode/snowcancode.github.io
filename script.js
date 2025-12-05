@@ -1,5 +1,9 @@
 const toggle = document.getElementById("themeToggle");
 
+if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  document.documentElement.setAttribute("data-theme", "dark");
+}
+
 // Load saved theme
 if (localStorage.getItem("theme") === "dark") {
   document.documentElement.setAttribute("data-theme", "dark");
