@@ -8,6 +8,9 @@
   --text: #ffffff;
 }
 
+.info {
+  font-size: 12px;
+}
 body {
   background-color: var(--bg);
   color: var(--text);
