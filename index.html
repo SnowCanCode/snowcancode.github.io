@@ -13,35 +13,36 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:         #0d1117;
-      --bg-card:    #161b27;
-      --bg-card-hover: #1c2333;
-      --border:     rgba(255,255,255,0.08);
-      --blue:       #4da6ff;
-      --text:       #e6edf3;
-      --text-muted: #7d8590;
-      --text-sub:   #a8b3c0;
-      --green:      #3fb950;
-      --orange:     #f0883e;
-      --header-h:   64px;
+      --bg-primary:        #0a0e27;
+      --bg-secondary:      #151b3d;
+      --bg-tertiary:       #1e2745;
+      --text-primary:      #e8eaed;
+      --text-secondary:    #9aa0a6;
+      --accent-blue:       #4a9eff;
+      --accent-blue-hover: #5ba8ff;
+      --accent-green:      #00c853;
+      --accent-red:        #ff5252;
+      --border:            #2d3548;
+      --header-h:          64px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--bg-primary);
+      color: var(--text-primary);
       font-family: 'Lexend', sans-serif;
       font-weight: 400;
       min-height: 100vh;
     }
 
+    /* ── HEADER ── */
     .header {
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--header-h);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2rem;
-      background: var(--bg);
+      background: var(--bg-primary);
       border-bottom: 1px solid var(--border);
       z-index: 100;
     }
@@ -49,7 +50,7 @@
     .logo h1 {
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--text);
+      color: var(--accent-blue);
       letter-spacing: -0.01em;
     }
     .logo h1 sup { font-size: 0.55em; vertical-align: super; }
@@ -59,10 +60,11 @@
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       margin-top: 1px;
     }
 
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -71,12 +73,23 @@
       justify-content: center;
       text-align: center;
       padding: calc(var(--header-h) + 60px) 1.5rem 80px;
+      /* subtle radial glow behind hero text */
+      background: radial-gradient(ellipse 80% 50% at 50% 40%, rgba(74,158,255,0.08) 0%, transparent 70%);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      margin-bottom: 1rem;
     }
 
     .hero h2 {
       font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 700;
-      color: var(--text);
+      color: var(--text-primary);
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
       line-height: 1.15;
@@ -85,12 +98,13 @@
     .hero p {
       font-size: 1.05rem;
       font-weight: 300;
-      color: var(--text-sub);
+      color: var(--text-secondary);
       max-width: 480px;
       line-height: 1.7;
       margin-bottom: 3rem;
     }
 
+    /* ── APPS SECTION ── */
     .apps-section {
       padding: 0 1.5rem 100px;
       max-width: 1100px;
@@ -102,7 +116,7 @@
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       margin-bottom: 1.5rem;
     }
 
@@ -112,8 +126,9 @@
       gap: 1rem;
     }
 
+    /* ── CARD ── */
     .card {
-      background: var(--bg-card);
+      background: var(--bg-secondary);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 28px 28px 24px;
@@ -124,16 +139,14 @@
       transition: background 0.2s, border-color 0.2s, transform 0.2s;
     }
     .card:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(255,255,255,0.15);
+      background: var(--bg-tertiary);
+      border-color: var(--accent-blue);
       transform: translateY(-2px);
     }
-    .card.disabled {
-      cursor: default;
-    }
+    .card.disabled { cursor: default; }
     .card.disabled:hover {
       transform: none;
-      background: var(--bg-card);
+      background: var(--bg-secondary);
       border-color: var(--border);
     }
 
@@ -163,14 +176,14 @@
       border-radius: 50%;
       background: currentColor;
     }
-    .status-live   { color: var(--green);       background: rgba(63,185,80,0.1); }
-    .status-dev    { color: var(--orange);       background: rgba(240,136,62,0.1); }
-    .status-soon   { color: var(--text-muted);   background: rgba(125,133,144,0.1); }
+    .status-live { color: var(--accent-green); background: rgba(0,200,83,0.1); }
+    .status-dev  { color: #f0883e;             background: rgba(240,136,62,0.1); }
+    .status-soon { color: var(--text-secondary); background: rgba(154,160,166,0.1); }
 
     .card h3 {
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--text);
+      color: var(--text-primary);
       letter-spacing: -0.01em;
       margin-bottom: 4px;
     }
@@ -181,14 +194,14 @@
       font-weight: 400;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--accent-blue);
       margin-bottom: 14px;
     }
 
     .card-desc {
       font-size: 0.875rem;
       font-weight: 300;
-      color: var(--text-sub);
+      color: var(--text-secondary);
       line-height: 1.65;
       flex: 1;
       margin-bottom: 20px;
@@ -207,15 +220,15 @@
       padding: 3px 10px;
       border: 1px solid var(--border);
       border-radius: 4px;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
     .btn-primary {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--blue);
-      color: #0d1117;
+      background: var(--accent-blue);
+      color: #0a0e27;
       font-family: 'Lexend', sans-serif;
       font-size: 0.875rem;
       font-weight: 600;
@@ -227,14 +240,14 @@
       transition: background 0.15s;
       width: 100%;
     }
-    .btn-primary:hover { background: #78bfff; }
+    .btn-primary:hover { background: var(--accent-blue-hover); }
 
     .btn-secondary {
       display: flex;
       align-items: center;
       justify-content: center;
       background: transparent;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       font-family: 'Lexend', sans-serif;
       font-size: 0.875rem;
       font-weight: 400;
@@ -244,6 +257,7 @@
       width: 100%;
     }
 
+    /* ── FOOTER ── */
     .footer {
       border-top: 1px solid var(--border);
       padding: 1.75rem 2rem;
@@ -257,17 +271,17 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .footer-brand p { font-size: 0.8rem; color: var(--text-muted); }
-    .footer-brand strong { color: var(--blue); }
-    .copyright { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+    .footer-brand p { font-size: 0.8rem; color: var(--text-secondary); }
+    .footer-brand strong { color: var(--accent-blue); }
+    .copyright { font-size: 0.75rem; color: var(--text-secondary); margin-top: 3px; }
     .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .footer-links a {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       text-decoration: none;
       transition: color 0.15s;
     }
-    .footer-links a:hover { color: var(--text); }
+    .footer-links a:hover { color: var(--accent-blue); }
 
     @media (max-width: 600px) {
       .apps-grid { grid-template-columns: 1fr; }
@@ -285,6 +299,7 @@
 </header>
 
 <section class="hero">
+  <p class="hero-eyebrow">Aegis Global Services</p>
   <h2>The AGS Product Suite</h2>
   <p>All our tools, one place. Built affordable, built right.</p>
 </section>
